@@ -1,12 +1,26 @@
-from flask import Flask, render_template
+from flask import Flask
 
 app = Flask(__name__)
 
 @app.route('/')
 def index():
-    # �摜�t�@�C���̃p�X��ݒ肷��
-    image_path = './image.jpg'
-    return render_template('index.html', image_path=image_path)
+    html = '''
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <title>美味しいデザート</title>
+        <meta charset="utf-8"/>
+    </head>
+    <body>
+        <h1>デザート一覧</h1>
+        <ul>
+            <li>アイス</li>
+            <li>ケーキ</li>
+            <li>パフェ</li>
+    </body>
+</html>'''
+    return html
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.debug = True
+    app.run(host='localhost')
